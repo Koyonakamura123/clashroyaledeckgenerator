@@ -1,4 +1,5 @@
 import './App.css';
+import NamePicker from "./NamePicker";
 import {useState, useEffect} from "react";
 // generate api key at https://developer.clashroyale.com/
 
@@ -9,6 +10,8 @@ function App() {
   const [season, setSeason] = useState("2016-02");
   const [rankings, setRankings] = useState();
   const [playerid, setPlayerid] = useState();
+  const [cardLevels, setCardLevels] = useState();
+
   function getCards() {
     fetch("/api/cards").then(response => response.json()).then(data => setCards(data));
   }
@@ -19,6 +22,12 @@ function App() {
     fetch("/api/seasons").then(response => response.json()).then(data => updateSeason(data));
   }
 
+  /*
+  function getPlayerInfo() {
+    fetch("/api/player/%2320LPYLRCL").then(response => response.json()).then(data => console.log(data));
+  }
+  */
+
   function updateSeason(data) {
     const length = data["items"].length;
     console.log("Array length: " + length);
@@ -28,7 +37,7 @@ function App() {
 
   // just runs when App is rendered
   useEffect(()=>{
-    // getCards();
+    getCards();
     // getRankings();
     // getCurrentSeason();
   }, []);
@@ -37,7 +46,8 @@ function App() {
 
   return (
     <div className="App">
-      <NamePicker id={playerid} />
+      <NamePicker saveName = {setPlayerid} />
+      {/* <PlayerInfo id={playerid} levels = {setCardLevels} /> */}
     </div>
   );
 }
