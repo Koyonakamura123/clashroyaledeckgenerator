@@ -8,10 +8,11 @@ function NamePicker(props) {
     }
     return (
         <div className = "name-picker">
+            #
             <input value={username}
                 onChange={e=> setUsername(e.target.value)}
             />
-            <button onClick={save}>OK</button>
+            <button onClick={save}>Search</button>
         </div>
     )
 }
