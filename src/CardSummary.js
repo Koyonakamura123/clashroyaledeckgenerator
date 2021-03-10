@@ -4,7 +4,7 @@ import {useState, useEffect} from "react";
 function CardSummary(props) {
     const [cardSummary, setCardSummary] = useState({});
     useEffect(() => {
-        if(props.levels !== undefined && props.cards !== undefined) {
+        if(props.levels && props.cards) {
             //make dictionary cardName: cardLevel
             const cardSummaries = {};
             var i = 0;
@@ -19,14 +19,17 @@ function CardSummary(props) {
             setCardSummary(cardSummaries);
             props.saveCards(cardSummary);
         }
-    }, [props.levels]);
-    if(cardSummary == undefined) {
+    }, [props.levels, props.cards]);
+    console.log(cardSummary);
+    if(Object.keys(cardSummary).length === 0) {
         return(
             <div>
                 Unable to generate card summary.
             </div>
         )
     }
+    console.log(props.cards);
+    console.log(props.levels);
     return(
         <div>
             {Object.keys(cardSummary).map((key, index) => {
