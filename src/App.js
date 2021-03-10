@@ -25,13 +25,15 @@ function App() {
     // getPlayerInfo();
   }, []);
 
-  console.log(playerid);
+  console.log(cardLevels);
 
   return (
     <div className="App">
       <NamePicker saveName = {setPlayerid} />
       <PlayerInfo id={playerid} saveLevels = {setCardLevels} />
-      <CardSummary levels={cardLevels} cards={cards} saveCards = {setCardSummary} />
+      {
+        cardLevels && <CardSummary levels={cardLevels} cards={cards} saveCards = {setCardSummary} />
+      }
       {/* <DeckSuggestions levels={cardLevels} /> */}
     </div>
   );

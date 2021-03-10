@@ -28,11 +28,10 @@ function PlayerInfo(props) {
         if(props.id.length > 6) { // initial check to see if entered id is of appropriate length - arbitrary for now
             getPlayerInfo(props.id);
             if(playerInfo !== undefined && playerInfo.hasOwnProperty("tag")) {
-                console.log("player info exists");
                 props.saveLevels(getCardLevels(playerInfo));
             }
         }
-    }, [props.id]);
+    }, [props.id, playerInfo]);
     
     if(playerInfo !== undefined && playerInfo.hasOwnProperty("tag")) {
         return(
