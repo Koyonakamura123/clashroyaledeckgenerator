@@ -33,10 +33,11 @@ function CardSummary(props) {
     return(
         <div>
             {Object.keys(cardSummary).map((key, index) => {
-                return <div key={index}>
+                return <div key={index} class="card-info">
                     <h3>Card information for {key}:</h3>
                     <p>Level: {cardSummary[key]["level"]}</p>
-                    <p>Image: {cardSummary[key]["iconUrl"]}</p>
+                    {/* <p>Image: {cardSummary[key]["iconUrl"]}</p> */}
+                    <img src={cardSummary[key]["iconUrl"]} alt={cardSummary[key]["name"]}/>
                 </div>
             })}
         </div>
